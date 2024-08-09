@@ -5,21 +5,24 @@ class Solution(object):
         :rtype: List[str]
         """
         stack = []
-        result = []
-        for i in range(n):
-            stack.append("(")
-        for i in range(n):
-            stack.append(")")
-        result.append("".join(stack))
-        
-        k = n
-        for i in range(n):
-            k += i
-            stack[k-1],stack[k] = stack[k],stack[k-1]
-            result.append("".join(stack))
-            
-        
-        return result
+        res = []
+
+        def backtrack(openN, closedN):
+            if openN == closedN == n:
+                res.append("".join(stack))
+                return
+
+            if openN < n:
+                stack.append("(")
+                backtrack(openN + 1, closedN)
+                stack.pop()
+            if closedN < openN:
+                stack.append(")")
+                backtrack(openN, closedN + 1)
+                stack.pop()
+
+        backtrack(0, 0)
+        return res
     
 def main():
     nums = 3
