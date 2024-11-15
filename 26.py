@@ -21,7 +21,7 @@ class Solution(object):
 def main():
     nums = [1,1,2]
     my_object = Solution()
-    judgement = my_object.removeElement(nums,val)
+    judgement = my_object.removeElement(nums,my_object)
     print(judgement)
 
 if __name__ == "__main__":
