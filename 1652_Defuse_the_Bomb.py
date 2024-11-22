@@ -1,34 +1,34 @@
 class Solution(object):
-    def plus(self,code,k):
-      n=len(code)
-      new_code=[]
-      for ind in range(n):
-          new_element=0
-          for i in range(1,k+1):
-            new_element+= code[(ind+i)%n]
-          new_code.append(new_element)
-      return new_code
-        
-    def minus(self,code,k):
+    def sum_next_k_element(self,code,k):
         n=len(code)
         new_code=[]
-        for ind in range(n):
-            new_element=0
-            for i in range(1,k+1):
-              new_element+= code[(ind-i)%n]
-            new_code.append(new_element)
+        for i in range(n):
+            sum_val=0
+            for j in range(1,k+1):
+              sum_val+= code[(i+j)%n]
+            new_code.append(sum_val)
+        return new_code
+        
+    def sum_prev_k_elements(self,code,k):
+        n=len(code)
+        new_code=[]
+        for i in range(n):
+            sum_val=0
+            for j in range(1,abs(k)+1):
+              sum_val+= code[(i-j)%n]
+            new_code.append(sum_val)
         return new_code
     
-    def equal(self,code):
+    def clear_array(self,code):
         code = [0] * len(code)
         return code
     def decrypt(self, code, k):
         if k>0:
-            return self.plus(code,k)
+            return self.sum_next_k_element(code,k)
         elif k<0:
-            return self.minus(code,-k)
+            return self.sum_prev_k_elements(code,k)
         else:
-            return self.equal(code)
+            return self.clear_array(code)
         
     
 
@@ -37,8 +37,8 @@ def main():
     code = [5,7,1,4]
     k = 3
     my_object = Solution()        
-    judgement = my_object.decrypt(code, k)
-    print(judgement)
+    res = my_object.decrypt(code, k)
+    print(res)
 
 if __name__ == "__main__":
    main()
