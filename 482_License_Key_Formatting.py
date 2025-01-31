@@ -18,6 +18,7 @@ class Solution:
 
         return reformatted_license_key
 
+
     def find_first_group_size(self, no_hyphens: str, k: int) -> int:
         """
         Determine the size of the first group based on the length of 'no_hyphens' and the integer 'k'.
@@ -33,6 +34,7 @@ class Solution:
             return len(no_hyphens) % k
         else:
             return k
+
 
     def split_into_groups(self, first_group_size: int, no_hyphens: str, k: int) -> str:
         """
