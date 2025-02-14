@@ -1,0 +1,7 @@
+{
+  "venvPath": "/Users/shigemichiatsushi/miniconda3",
+  "exclude": [
+      "**/node_modules",
+      "**/__pycache__"
+  ]
+}
