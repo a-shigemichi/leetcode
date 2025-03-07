@@ -20,9 +20,9 @@ class Solution:
         Returns:
             bool: True if the binary tree is height-balanced, False otherwise.
         """
-        return self.compute_balance_height(root)
+        return self.compute_balanced_height(root)
     
-    def compute_balance_height(self, node: Optional[TreeNode]) -> bool:
+    def compute_balanced_height(self, node: Optional[TreeNode]) -> bool:
         """
         Check if a binary tree is height-balanced.
         
@@ -40,8 +40,8 @@ class Solution:
         
         # Check if height difference is at most 1 and both subtrees are balanced
         if (abs(left_height - right_height) <= 1 and 
-            self.compute_balance_height(node.left) and 
-            self.compute_balance_height(node.right)):
+            self.compute_balanced_height(node.left) and 
+            self.compute_balanced_height(node.right)):
             return True
             
         return False
