@@ -1,0 +1,25 @@
+from typing import List
+class Solution:
+    def maxSumAfterPartitioning(self, arr: List[int], k: int) -> int:
+        """
+        Find the maximum sum after partitioning an array into subarrays of length at most k,
+        where each element in a subarray is replaced with the maximum value in that subarray.
+        
+        Parameters:
+            arr (List[int]): The integer array to partition
+            k (int): The maximum length of each subarray
+            
+        Returns:
+            int: The largest possible sum after partitioning
+        """
+        n = len(arr)
+        dp = [0] * (n + 1)
+        
+        for i in range(1, n + 1):
+            current_max = 0
+            
+            for j in range(1, min(k, i) + 1):
+                current_max = max(current_max, arr[i - j])
+                dp[i] = max(dp[i], dp[i - j] + current_max * j)
+        
+        return dp[n]
