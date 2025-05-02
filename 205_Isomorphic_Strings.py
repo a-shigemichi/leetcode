@@ -7,10 +7,11 @@ class Solution:
         """
         Determines if two strings are isomorphic.
         
-        Two strings are isomorphic if the characters in one string can be replaced
-        to get the other string. 
-        All occurrences of a character must be replaced with another character while
-        preserving the order of characters. No two characters may map to the same character, 
+        Two strings are isomorphic if the characters in one string can 
+        be replaced to get the other string. 
+        All occurrences of a character must be replaced with another
+        character while preserving the order of characters. 
+        No two characters may map to the same character, 
         but a character may map to itself.
         
         Args:
@@ -18,27 +19,26 @@ class Solution:
             word2: Second string to compare.
             
         Returns:
-            Result[bool, str]: Success(True) if the strings are isomorphic,
-                            Success(False) if the strings are not isomorphic,
-                            Failure with error message if strings are empty or have different lengths.
+            Result[bool, str]: 
+                Success(True) if the strings are isomorphic,
+                Success(False) if the strings are not isomorphic,
+                Failure with error message if strings are empty or have different lengths.
         """
-        if not word1 and not word2:
+        if not word1 or not word2:
             return Failure("Input strings cannot be empty")
 
         if len(word1) != len(word2):
             return Failure("Strings have different lengths")
         
-        if self.get_pattern(word1) == self.get_pattern(word2):
-            return Success(True)
-        else:
-            return Success(False)
+        return Success(self.get_pattern(word1) == self.get_pattern(word2))
 
     def get_pattern(self, word: str) -> List[int]:
         """
-        Converts a string into a pattern of indices representing the first occurrence of each character.
+        Converts a string into a pattern of indices representing 
+        the first occurrence of each character.
         
-        This creates a numerical pattern where each character is replaced by the index
-        of its first occurrence in the string.
+        This creates a numerical pattern where each character is replaced
+        by a unique ID based on when it first appears in the string.
         
         Args:
             word: String to convert into a pattern.
@@ -47,14 +47,14 @@ class Solution:
             List[int]: A list of integers representing the pattern of the string.
         """
         pattern = []
-        char_to_index = {}
-        next_index = 0
+        char_to_id = {}
+        unique_char_id = 0
         
         for character in word:
-            if character not in char_to_index:
-                char_to_index[character] = next_index
-                next_index += 1
-            pattern.append(char_to_index[character])
+            if character not in char_to_id:
+                char_to_id[character] = unique_char_id
+                unique_char_id += 1
+            pattern.append(char_to_id[character])
         
         return pattern
     
