@@ -30,9 +30,9 @@ class Solution:
         if len(word1) != len(word2):
             return Failure("Strings have different lengths")
         
-        return Success(self.get_pattern(word1) == self.get_pattern(word2))
+        return Success(self.generate_pattern(word1) == self.generate_pattern(word2))
 
-    def get_pattern(self, word: str) -> List[int]:
+    def generate_pattern(self, word: str) -> List[int]:
         """
         Converts a string into a pattern of indices representing 
         the first occurrence of each character.
